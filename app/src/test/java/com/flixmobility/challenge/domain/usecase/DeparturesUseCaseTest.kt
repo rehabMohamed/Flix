@@ -1,7 +1,7 @@
 package com.flixmobility.challenge.domain.usecase
 
-import com.flixmobility.challenge.domain.entity.DateTime
-import com.flixmobility.challenge.domain.entity.Departure
+import com.flixmobility.challenge.domain.entity.DateTimeEntity
+import com.flixmobility.challenge.domain.entity.DepartureEntity
 import com.flixmobility.challenge.domain.repo.TimetableRepo
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -38,7 +38,7 @@ class DeparturesUseCaseTest {
     @Test
     fun `getDepartures() returns the correct data`() {
         runBlocking {
-            val expected = listOf(Departure(DateTime(1461056400L, "GMT+02:00"), "L007", "Berlin"))
+            val expected = listOf(DepartureEntity(DateTimeEntity(1461056400L, "GMT+02:00"), "L007", "Berlin"))
             `when`(timetableRepo.getDepartures()).thenReturn(expected)
             val result = departuresUseCase.getDepartures()
             Assert.assertEquals(expected, result)

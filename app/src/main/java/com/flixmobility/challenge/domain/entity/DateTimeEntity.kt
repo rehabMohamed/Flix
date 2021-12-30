@@ -1,6 +1,6 @@
 package com.flixmobility.challenge.domain.entity
 
-data class DateTime(
+data class DateTimeEntity(
     var timestamp: Long?,
     var tz: String?
 )

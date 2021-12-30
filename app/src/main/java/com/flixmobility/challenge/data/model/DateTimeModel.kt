@@ -1,6 +1,8 @@
 package com.flixmobility.challenge.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class DateTimeModel(
-    var timestamp: Long?,
-    var tz: String?
+    @SerializedName("timestamp") val timestamp: Long?,
+    @SerializedName("tz") val tz: String?
 )

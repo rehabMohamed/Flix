@@ -12,8 +12,9 @@ class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Cl
         @JvmSuppressWildcards Provider<ViewModel>>): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
         viewModels[modelClass]?.get() as T
+
 }
 
 inline fun <reified VM: ViewModel> ViewModelProvider.Factory.obtainViewModel(activity: AppCompatActivity):VM{

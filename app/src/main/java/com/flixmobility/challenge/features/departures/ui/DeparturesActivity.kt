@@ -1,6 +1,7 @@
 package com.flixmobility.challenge.features.departures.ui
 
 import android.os.Bundle
+import android.util.Log
 import com.flixmobility.challenge.databinding.ActivityDeparturesBinding
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -22,10 +23,16 @@ class DeparturesActivity : DaggerAppCompatActivity() {
     }
 
     private fun getDepartures() {
-
+        viewModel.getDepartures()
     }
 
     private fun addObservers() {
+        viewModel.departuresLiveData.observe(this, { departures ->
+            Log.d("departures", departures.toString())
+        })
 
+        viewModel.errorLiveData.observe(this, { message ->
+            Log.d("error", message)
+        })
     }
 }

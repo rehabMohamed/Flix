@@ -1,6 +1,6 @@
 package com.flixmobility.challenge.domain.usecase
 
-import com.flixmobility.challenge.domain.entity.DateTime
+import com.flixmobility.challenge.domain.entity.DateTimeEntity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -11,8 +11,8 @@ const val STATION_TIME_PATTERN = "HH:mm"
 
 class StationTimeFormatUseCase @Inject constructor() {
 
-    fun getStationTime(dateTime: DateTime?) : String {
-        return dateTime?.let {
+    fun getStationTime(dateTimeEntity: DateTimeEntity?) : String {
+        return dateTimeEntity?.let {
             val formatter = SimpleDateFormat(STATION_TIME_PATTERN, Locale.getDefault())
             it.tz?.let { timezoneId ->
                 formatter.timeZone = TimeZone.getTimeZone(timezoneId)
