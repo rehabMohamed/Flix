@@ -13,15 +13,12 @@ class StationTimeFormatUseCase @Inject constructor() {
 
     fun getStationTime(dateTime: DateTime?) : String {
         return dateTime?.let {
-            val tz = it.tz?.let { timezoneId ->
-                TimeZone.getTimeZone(timezoneId)
-            } ?: TimeZone.getDefault()
             val formatter = SimpleDateFormat(STATION_TIME_PATTERN, Locale.getDefault())
-                .apply {
-                    timeZone = tz
+            it.tz?.let { timezoneId ->
+                formatter.timeZone = TimeZone.getTimeZone(timezoneId)
             }
             it.timestamp?.let { timestamp ->
-                formatter.format(Date(timestamp))
+                formatter.format(Date(timestamp * 1000))
             } ?: ""
         } ?: ""
     }
