@@ -2,6 +2,8 @@ package com.flixmobility.challenge.di
 
 import android.app.Application
 import com.flixmobility.challenge.ChallengeApp
+import com.flixmobility.challenge.features.departures.di.DeparturesActivityBindingModule
+import com.flixmobility.challenge.features.departures.di.DeparturesViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -16,7 +18,9 @@ import javax.inject.Singleton
         ApiModule::class,
         AndroidSupportInjectionModule::class,
         AndroidInjectionModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        DeparturesActivityBindingModule::class,
+        DeparturesViewModelModule::class
     ]
 )
 interface AppComponent : AndroidInjector<ChallengeApp> {
