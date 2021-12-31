@@ -2,6 +2,8 @@ package com.flixmobility.challenge.features.departures.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
@@ -25,22 +27,24 @@ class DeparturesActivity : DaggerAppCompatActivity() {
             adapter = departuresAdapter
             addItemDecoration(DividerItemDecoration(context, VERTICAL))
         }
-
         addObservers()
         getDepartures()
     }
 
     private fun getDepartures() {
+        binding.progressBar.visibility = VISIBLE
         viewModel.getDepartures()
     }
 
     private fun addObservers() {
         viewModel.departuresLiveData.observe(this, { departures ->
             departuresAdapter.setData(departures)
+            binding.progressBar.visibility = GONE
         })
 
         viewModel.errorLiveData.observe(this, { message ->
             Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            binding.progressBar.visibility = GONE
         })
     }
 }

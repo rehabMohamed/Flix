@@ -1,7 +1,5 @@
 package com.flixmobility.challenge.di
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.*
@@ -20,13 +18,6 @@ class NetworkModule {
             addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
             addInterceptor(HeadersInterceptor())
         }.build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideGson(): Gson {
-        return GsonBuilder()
-            .create()
     }
 
     @Singleton
