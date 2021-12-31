@@ -2,6 +2,7 @@ package com.flixmobility.challenge.features.departures.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.flixmobility.challenge.databinding.ActivityDeparturesBinding
@@ -39,7 +40,7 @@ class DeparturesActivity : DaggerAppCompatActivity() {
         })
 
         viewModel.errorLiveData.observe(this, { message ->
-            Log.d("error", message)
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         })
     }
 }
